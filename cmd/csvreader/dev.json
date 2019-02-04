@@ -3,5 +3,6 @@
         "Host": "localhost",
         "Port": 1234
     },
+    "Data": "./data/data.csv",
     "Separator": ","
 }
