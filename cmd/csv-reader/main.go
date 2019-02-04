@@ -44,6 +44,7 @@ type Config struct {
 	}
 	Data      string
 	Separator string
+	GRPCPort  int
 }
 
 func main() {
