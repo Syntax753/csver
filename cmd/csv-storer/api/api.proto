@@ -1,0 +1,16 @@
+syntax = "proto3";
+package api;
+
+message StoreResponse {
+    string response = 1;
+}
+
+message StoreRequest {
+    string request = 1;
+}
+
+service Storer {
+    rpc Store(StoreRequest) returns (StoreResponse) {}
+}
+
+
