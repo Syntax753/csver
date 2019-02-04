@@ -6,8 +6,6 @@ import (
 	"github.com/tkanos/gonfig"
 )
 
-var ()
-
 func init() {
 	fmt.Println("Initialising reader")
 	cfg := Config{}
@@ -30,6 +28,7 @@ type Config struct {
 	}
 	Separator string
 }
+
 
 func main() {
 
