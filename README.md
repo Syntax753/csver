@@ -10,9 +10,8 @@ I've gone with the omni-repos approach with the idea of having a lib/ for common
 I've create Makefiles to ensure common building terms amongst shared developers as well as taking care of abi generation and binary output.
 
 I would ideally have a master Makefile at project root outside of /cmd to do the end to end demo by taking care of calling the child makes and spinning up the client/server
-I would ideally have a master Makefile at project root outside of /cmd to do the end to end demo by taking care of calling the child makes and spinning up the client/server
 
-Overview:
+### Overview:
 
 ```text
 /cmd/csv-reader
