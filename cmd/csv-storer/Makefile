@@ -7,5 +7,5 @@ run:
 
 build:
 	go get -d
-	go build -o csvreader
+	go build -o csvstorer
 	protoc -I api/ -I/home/syntax/go/src --go_out=plugins=grpc:api api/api.proto
