@@ -1,0 +1,7 @@
+{
+    "Database": {
+        "Host": "localhost",
+        "Port": 1234
+    },
+    "Separator": ","
+}
