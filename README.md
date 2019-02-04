@@ -76,4 +76,6 @@ All standard apart from:
 
 * Exporting the grpc port numbers. The storer doesn't have a notion of config yet
 
-* The csv-reader should initialise the client and used
+* The csv-reader should initialise the client and use it
+
+* Didn't get time to trap the sigs though would have been done with a goroutine and have a check on the main for loop for that to be set and break if so
