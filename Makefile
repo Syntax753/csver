@@ -1,6 +1,6 @@
 # Makefile
 
-all: proto build
+all: build
 
 build:
 	make -C cmd/csv-reader build
@@ -10,3 +10,7 @@ build:
 run:
 	make -C cmd/csv-reader run
 	make -C cmd/csv-storer run 
+
+demo: build
+	cmd/csv-storer/bin/server
+	cmd/csv-reader/bin/reader
