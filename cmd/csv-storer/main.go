@@ -5,6 +5,7 @@ import (
 	"log"
 	"net"
 
+	"github.com/syntax753/csver/cmd/csv-storer/handler"
 	"github.com/syntax753/csver/lib/config"
 
 	"github.com/syntax753/csver/api"
@@ -23,7 +24,7 @@ func main() {
 	}
 
 	// create a server instance
-	s := api.Server{}
+	s := handler.Server{}
 
 	grpcServer := grpc.NewServer()
 
