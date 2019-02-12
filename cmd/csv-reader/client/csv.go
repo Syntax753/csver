@@ -23,7 +23,7 @@ type Client struct {
 
 // TODO: pool of connections? maintaining connection perhaps?
 // Currently opening new connection in #Process method on each call
-// 
+//
 func init() {
 	log.Println("Init client")
 
@@ -38,7 +38,7 @@ func NewClient() *Client {
 }
 
 // Process delegates the handling of one string overo grpc
-func (client *Client) Process(req string) {
+func (client *Client) Process(line string) {
 
 	// // TODO: connect to server at construction time/rather than initially
 	// Presumes one instance here for the purposes of this challenge
@@ -51,7 +51,7 @@ func (client *Client) Process(req string) {
 	storerClient = api.NewStorerClient(conn)
 
 	r, err := storerClient.Store(context.Background(), &api.StoreRequest{
-		Request: "Test",
+		Request: line,
 	})
 
 	if err != nil {
