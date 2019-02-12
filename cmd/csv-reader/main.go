@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/csv"
+	"encoding/json"
 	"fmt"
 	"io"
 	"log"
@@ -10,6 +11,7 @@ import (
 	csver "github.com/syntax753/csver/cmd/csv-reader/client"
 
 	"github.com/syntax753/csver/lib/config"
+	"github.com/syntax753/csver/lib/model"
 )
 
 var (
@@ -46,21 +48,21 @@ func main() {
 			continue
 		}
 
-		// data := &model.DataRecord{
-		// 	Name:        line[1],
-		// 	Email:       line[2],
-		// 	CountryCode: "+44",
-		// 	Mobile:      line[3],
-		// }
+		data := &model.DataRecord{
+			Name:        line[1],
+			Email:       line[2],
+			CountryCode: "+44",
+			Mobile:      line[3],
+		}
 
-		// record := &model.Record{
-		// 	ID:     line[0],
-		// 	Record: *data,
-		// }
+		record := &model.Record{
+			ID:     line[0],
+			Record: *data,
+		}
 
-		// log.Println("Processing %+v\n", record)
+		json, _ := json.Marshal(record)
 
-		client.Process("Hello")
+		client.Process(string(json))
 
 	}
 }

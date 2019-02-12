@@ -1,4 +1,4 @@
-// Package csv serves includes all csv client
+// Package csver holds all csv client implementations
 package csver
 
 import (
@@ -40,7 +40,8 @@ func NewClient() *Client {
 // Process delegates the handling of one string overo grpc
 func (client *Client) Process(line string) {
 
-	// // TODO: connect to server at construction time/rather than initially
+	// TODO: connect to server at init time/rather than at process time
+	// Threadpool? etc
 	// Presumes one instance here for the purposes of this challenge
 	var conn *grpc.ClientConn
 	conn, err := grpc.Dial(fmt.Sprintf(":%d", config.Global().GRPCPort), grpc.WithInsecure())
