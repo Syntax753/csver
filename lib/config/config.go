@@ -5,7 +5,6 @@ package config
 import (
 	"fmt"
 	"log"
-	"path/filepath"
 
 	"github.com/tkanos/gonfig"
 )
@@ -17,16 +16,16 @@ var (
 func init() {
 	log.Println("Init config")
 
-	//TODO: env variable picking the config values for the right env
-	path, err := filepath.Abs("./dev.json")
+	// //TODO: env variable picking the config values for the right env
+	// path, err := filepath.Abs("./dev.json")
 
-	if err != nil {
-		log.Fatalf("Could not load configuration! %v\n", err)
-	}
+	// if err != nil {
+	// 	log.Fatalf("Could not load configuration! %v\n", err)
+	// }
 
 	cfg = Configuration{}
 
-	err = gonfig.GetConf(path, &cfg)
+	err := gonfig.GetConf("../../lib/config/dev.json", &cfg)
 	if err != nil {
 		log.Fatalf("Could not load configuration! %v\n", err)
 	}
