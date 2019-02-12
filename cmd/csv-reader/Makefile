@@ -3,10 +3,9 @@
 all: build run
 
 run:
-	# TODO: permission issue to run binary direct
 	# go run *.go
-	go run api/client.go
+	bin/reader
 
 build:
 	go get -d
-	go build -o bin/client api/client.go
+	go build -i -v -o bin/reader

@@ -1,3 +1,5 @@
+// Package api stores the interface this project client server and is responsible
+// for the proto definitons and build
 package api
 
 import (

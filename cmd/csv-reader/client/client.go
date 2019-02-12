@@ -1,22 +1,22 @@
 // Package api serves as client for grpc
 // TODO: integrate this with main csv-reader logic. For now using as example
-package api
+package client
 
 import (
 	"fmt"
 	"log"
 
+	"github.com/syntax753/csver/api"
+	"github.com/syntax753/csver/lib/config"
 	"golang.org/x/net/context"
-
-	"github.com/syntax753/csver/cmd/csv-storer/api"
-
 	"google.golang.org/grpc"
 )
 
-func main() {
+func init() {
+	
 	var conn *grpc.ClientConn
 
-	conn, err := grpc.Dial(fmt.Sprintf("%d", 7777), grpc.WithInsecure())
+	conn, err := grpc.Dial(fmt.Sprintf("%d", config.Global().GRPCPort), grpc.WithInsecure())
 	if err != nil {
 		log.Fatalf("Client could not connect: %s", err)
 	}

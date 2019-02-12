@@ -7,9 +7,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/syntax753/csver/lib/model"
+	"github.com/syntax753/csver/lib/config"
 
-	"github.com/tkanos/gonfig"
+	"github.com/syntax753/csver/lib/model"
 )
 
 var (
@@ -17,34 +17,16 @@ var (
 )
 
 func init() {
-	fmt.Println("Init reader")
-	cfg := Config{}
+	log.Println("Init reader")
 
-	err := gonfig.GetConf("./dev.json", &cfg)
+	f, err := os.Open(config.Global().Data)
 	if err != nil {
-		log.Fatalf("Could not load configuration! %v\n", err)
-	}
-	fmt.Printf("Using config: %+v\n", cfg)
-
-	f, err := os.Open(cfg.Data)
-	if err != nil {
-		log.Fatalf("Could not open data file %q! %v\n", cfg.Data, err)
+		log.Fatalf("Could not open data file %q! %v\n", config.Global().Data, err)
 	}
 
 	reader = csv.NewReader(f)
-	reader.Comma = []rune(cfg.Separator)[0]
-	fmt.Println("Init done")
-}
-
-// Config holds the configuration for reader and the endpoint to store the data
-type Config struct {
-	Database struct {
-		Host string
-		Port string
-	}
-	Data      string
-	Separator string
-	GRPCPort  int
+	reader.Comma = []rune(config.Global().Separator)[0]
+	log.Println("Reader done")
 }
 
 func main() {

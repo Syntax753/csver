@@ -1,0 +1,9 @@
+{
+    "Database": {
+        "Host": "localhost",
+        "Port": 1234
+    },
+    "Data": "../../data/data.csv",
+    "Separator": ",",
+    "GRPCPort": 7777
+}
