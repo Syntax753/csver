@@ -40,12 +40,12 @@ func main() {
 	for {
 		line, err := reader.Read()
 		if err == io.EOF {
-			break
+			client.Process("")
 		}
 
 		if err != nil {
 			fmt.Printf("Error importing %v - igoring\n", line)
-			continue
+			break
 		}
 
 		data := &model.DataRecord{

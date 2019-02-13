@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"os"
 
 	"github.com/syntax753/csver/api"
 
@@ -26,7 +27,13 @@ type dbType map[string]model.DataRecord
 // Store accepts a grpc request with the csv payload line and returns sync response for now
 func (s *Server) Store(ctx context.Context, in *api.StoreRequest) (*api.StoreResponse, error) {
 	req := in.GetRequest()
-	log.Printf("Processing %s\n", req)
+	// log.Printf("Processing %s\n", req)
+
+	if req == "" {
+		log.Printf("Database: %+v", database)
+
+		os.Exit(0)
+	}
 
 	var rec = model.Record{}
 	err := json.Unmarshal([]byte(req), &rec)
@@ -44,5 +51,5 @@ func (s *Server) Store(ctx context.Context, in *api.StoreRequest) (*api.StoreRes
 
 	database[rec.ID] = rec.Record
 
-	return &api.StoreResponse{Response: fmt.Sprintf("%v: %v", rec.ID, sts)}, nil
+	return &api.StoreResponse{Response: fmt.Sprintf("%v: %v\n", rec.ID, sts)}, nil
 }
