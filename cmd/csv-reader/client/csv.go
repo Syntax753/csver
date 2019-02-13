@@ -59,5 +59,6 @@ func (client *Client) Process(line string) {
 		log.Fatalf("Client could not connect: %s", err)
 	}
 
-	log.Printf("Response from server: %s", r.Response)
+	fmt.Printf("Success: %s\n", r.Response)
+
 }
